@@ -3,3 +3,4 @@ ipxe
 kernel
 packages/*
 http/*
+tftp/ipxe.efi
