@@ -4,3 +4,6 @@ kernel
 packages/*
 http/*
 tftp/ipxe.efi
+initrd.gz
+
+!**/.gitignore

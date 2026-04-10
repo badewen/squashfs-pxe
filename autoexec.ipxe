@@ -2,6 +2,6 @@
 
 dhcp
 
-kernel http://${next-server}/vmlinuz fetch=http://${next-server}/filesystem.squashfs logleve=7
+kernel http://${next-server}/vmlinuz fetch=http://${next-server}/filesystem.squashfs loglevel=7
 initrd http://${next-server}/initrd.gz
 boot
