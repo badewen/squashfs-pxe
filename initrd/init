@@ -1,0 +1,34 @@
+#!/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+mount -t devtmpfs dev /dev
+
+squashfs_url=""
+
+# extract /proc/cmdline
+if [[ ! $(cat /proc/cmdline) =~ fetch=([^ ]*) ]]; then
+    echo "fetch= argument is not supplied. Please speciy it from kernel command line"
+    exit 1
+else
+    squashfs_url=${BASH_REMATCH[1]}
+fi
+
+interfaces=$(ls /sys/class/net)
+
+for i in $interfaces; do
+    if [[ "$i" != eth* ]]; then
+        continue
+    fi
+
+    if printf "\nauto %s\niface %s inet dhcp\n" "$i" "$i" >> /etc/network/interfaces; then
+        ifup -a
+    fi
+done
+
+sleep 5
+
+wget $squashfs_url
+mount -t squashfs filesystem.squashfs /newroot
+exec switch_root /newroot /sbin/init

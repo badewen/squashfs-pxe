@@ -1,0 +1,5 @@
+initrd-final
+ipxe
+kernel
+packages/*
+http/*

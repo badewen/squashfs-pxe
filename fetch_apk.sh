@@ -1,0 +1,1 @@
+apk fetch --output=packages --no-cache --repositories-file=/dev/null --repository=https://dl-cdn.alpinelinux.org/v3.23/community  --repository=https://dl-cdn.alpinelinux.org/v3.23/main -R --allow-untrusted $@
