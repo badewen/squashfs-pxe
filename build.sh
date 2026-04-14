@@ -48,5 +48,5 @@ echo "==> Building kernel..."
 # ── Config ───────────────────────────────────────────────────────────────────
 echo "==> Copying autoexec.ipxe..."
 sudo cp ./autoexec.ipxe ./http/
-
+sudo cp ./autoexec.ipxe ./tftp/
 echo "==> Done."
